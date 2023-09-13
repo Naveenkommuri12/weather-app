@@ -13,3 +13,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    function fetchWeather(city) {
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+        fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                
+            })
+            .catch((error) => {
+                console.error("Error fetching weather data:", error);
+            });
+    }
+});
