@@ -19,7 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(apiUrl)
             .then((response) => response.json())
             .then((data) => {
-                
+                if (data.cod === 200) {
+                    const temperature = data.main.temp;
+                    const description = data.weather[0].description;
+                    const weatherText = `Temperature: ${temperature}°C<br>Description: ${description}`;
+
+                    weatherInfo.innerHTML = `Weather in ${city}:<br>${weatherText}`;
+                } else {
+                    weatherInfo.innerHTML = "City not found. Please try again.";
+                }
             })
             .catch((error) => {
                 console.error("Error fetching weather data:", error);
